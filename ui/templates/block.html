@@ -1,0 +1,55 @@
+{{define "block" }}
+<style>
+    .row {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+    span {
+        margin-right: 5px;
+    }
+    form {
+        display: inline-block;
+    }
+    .block {
+        display: inline-flex;
+        margin: 5px;
+        cursor: pointer;
+        border: 1px solid #673ab7;
+        width: 261px;
+        flex-direction: column;
+        align-items: center;
+        border-radius: 15px;
+    }
+    .block:hover {
+        box-shadow: 10px 5px 5px #673ab7;
+    }
+    button {
+        background-color: transparent;
+        border: none;
+    }
+    img {
+        margin-top: 10px;
+    }
+</style>
+<form action="artist">
+<button type="submit" name="id" value={{.Id}}>
+
+<div class="block">
+<div class="row">
+    <img src={{.Image}}>
+</div>
+<div class="row">
+    <pre>{{ .Name}}</pre>
+</div>
+<div class="row">
+    <span>creation date: 
+    </span>
+    <pre>{{ .CreationDate}}</pre>
+</div>
+</div>
+</button>
+</form>
+
+
+{{ end }}

@@ -1,0 +1,83 @@
+{{define "main" }}
+<style>
+    .body {
+        width: 100%;
+        height: 100%;
+    }
+    .info {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+    .left .right {
+        width: 50%;
+    }
+    .left{
+        margin-right: 20px;
+    }
+    .table, .members {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    }
+    table, .members {
+        display: flex;
+        justify-content: center;
+    }
+    tr, th, td {
+        border: 1px solid black
+    }
+</style>
+<div class="body">
+    <div class="info">
+    <div class="left">
+        <img src={{.Image}}>
+    </div>
+    <div class="right">
+        <div>
+            <h1>{{.Name}}</h1>
+        </div>
+        <div>
+            <span>Creation date:</span>
+            <span>{{.CreationDate}}</span>
+        </div>
+        <div>
+            <span>First Album:</span>
+            <span>{{.FirstAlbum}}</span>
+        </div>
+    </div>
+    </div>
+    <div class="table">
+        <h3>Concerts</h3>
+        <table>
+            <tr>
+                <!-- <th>#</th> -->
+                <th>Location</th>
+                <th>Dates</th>
+            </tr>
+            {{range $key, $value:= .RelationsData.DatesLocations }}
+            <tr>          
+                <td>           
+                    {{$key}}   
+                </td>
+                <td>
+                    {{range $val:= $value}}           
+                    {{$val}}   
+                    {{end}}
+                </td>
+            </tr>
+            {{end}}
+        </table>
+    </div>
+    <div class="members">
+        <h3>Members:</h3>
+        <div>
+            {{ range .Members }}
+                <span>{{.}}</span>
+            {{end}}
+        </div>
+    </div>
+</div>  
+{{end}}
